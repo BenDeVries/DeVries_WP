@@ -43,5 +43,5 @@ from Zotero into a BibTex file.
 
 ### LaTeX and BibTeX References
 - [The Not So Short Introduction to LaTeX](http://mirrors.rit.edu/CTAN/info/lshort/english/lshort.pdf)
-- [natbib citation commands](http://merkel.texture.rocks/Latex/natbib.php)
+- [natbib Reference Sheet](https://gking.harvard.edu/files/natnotes2.pdf)
 - [More details on using the natbib package](https://gking.harvard.edu/files/natbib2.pdf)
