@@ -1,0 +1,109 @@
+---
+output:
+  pdf_document: default
+  header-includes: \usepackage{WPROJ} \usepackage{natbib} 
+  toc: true
+  number_sections: true
+bibliography: references.bib
+fontsize: 12 pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+\begin{titlepage}
+\null
+\vspace{2.in}
+% Enter title here
+\begin{center}
+{\Large \bf \maintitle} \vspace{.1in}
+
+\vspace{.05in}
+{\LARGE\bf $\;$} \\ [.5in]
+{\Large  \myname \\
+\vspace{0.5cm}
+Department of Mathematical Sciences \\
+Montana State University \\ [.5in]}
+\mydate \\ [1.in]
+A writing project submitted in partial fulfillment\\
+of the requirements for the degree\\[.25in]
+Master of Science in Statistics
+\end{center}
+\end{titlepage}
+
+\begin{titlepage}
+\null
+\vspace{2.in}
+\begin{center}
+{\bf\huge APPROVAL}\\[1.in]
+of a writing project submitted by\\[.25in]
+\myname \\[1.in]
+\end{center}
+\noindent
+This writing project has been read by the writing project advisor and
+has been found to be satisfactory regarding content, English usage,
+format, citations, bibliographic style, and consistency, and is ready
+for submission to the Statistics Faculty.
+
+\vspace{.3in}
+\begin{center}
+\begin{tabular}{ll}
+\rule{2.75in}{.03in} & \rule{2.75in}{.03in} \\
+Date& \myadvisor \\
+& Writing Project Advisor \\
+\end{tabular}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+\begin{tabular}{ll}
+\rule{2.75in}{.03in} & \rule{2.75in}{.03in} \\
+Date& \wprojcoord \\
+& Writing Projects Coordinator \\
+\end{tabular}
+\end{center}
+
+\end{titlepage}
+
+\vspace{2.in}
+\begin{abstract}
+\input{abstract}
+\end{abstract}
+\newpage
+
+\tableofcontents
+\newpage
+
+
+# Introduction
+\label{sec:intro}
+
+This is my introduction. This problem is important because... Here is the motivation for my study.
+
+In \ref{sec:background}, I will review the literature on this topic. \ref{sec:methods} describes my methods.
+Finally, in \ref{sec:conclusion}, I will discuss the implications of this research and future work.
+
+# Background
+\label{sec:background}
+
+# Methods
+\label{sec:methods}
+
+I am describing statistical methods used in this work. Often, it is nice to have
+some figures throughout the document
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{figures/correlation}
+\caption{My favorite statistical cartoon.}
+\label{cartoon}
+\end{figure}
+
+Then, later in the text, we may reference Figure \ref{cartoon} [cartoon by, @xkcd].
+
+# Conclusion
+\label{sec:conclusion}
+
+# References
