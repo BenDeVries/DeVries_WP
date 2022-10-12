@@ -1,6 +1,6 @@
 # MS Statistics Writing Project Template
 
-This repository contains a Latex template for formatting a writing project required
+This repository contains both an RMD and a Latex template for formatting a writing project required
 for completion of a Masters of Science in Statistics at Montana State University.
 Files include:
 
@@ -11,9 +11,11 @@ date of completion, and name of current writing project coordinator).
 Add any other needed packages or new commands to this file.
 - coversheet.tex - Creates cover sheet for writing project document. You
 will not need to edit this file.
-- main.tex - Combine individual sections to create your document.
+- main_LATEX.tex - Latex file to combine individual sections to create your document.
 Compile this file to produce a pdf of your entire document. Names of sections
 should match names of .tex files in "body" folder
+- main_RMD.tex - RMD file that contains the ability to combine individual latex sections or write code / text directly in RMD.
+Compile this file to produce a pdf of your entire document. When using latex sections, names of sections should match names of .tex files in "body" folder
 - references.bib - BibTeX file of your references. 
 - body folder - .tex files of each section
 - figures folder - all figures included in your document

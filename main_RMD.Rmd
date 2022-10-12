@@ -1,0 +1,57 @@
+---
+title: ''
+output:
+  bookdown::pdf_document2:
+    toc: true
+    number_sections: true
+    extra_dependencies: ["WPROJ", "natbib"]
+    citation_package: natbib
+    includes:
+      before_body: "coversheet.tex"
+documentclass: article
+fontsize: 12pt
+linestretch: 2
+bibliography: references.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+\newpage
+
+# Introduction {#sec:intro}
+This is my introduction, Section \ref{sec:intro}. This problem is important because... Here is the motivation for my study.
+
+In \ref{sec:background}, I will review the literature on this topic. \ref{sec:methods} describes my methods.
+Finally, in \ref{sec:conclusion}, I will discuss the implications of this research and future work.
+
+## Subsection
+
+This is a subsection in my Introduction section.
+
+# Literature Review {#sec:background}
+Review of the literature. \citet{emalgorithm} was a seminal paper describing maximum likelihood
+estimation for incomplete data. We wrote an R package and talk about it here \citep{TDARpackage}.
+Often, we cite proceedings papers \citep{plh-survey}, and sometimes we want to cite
+two papers at once \citep{chen2018statistical,wasserman2004}.
+
+
+# Methods {#sec:methods}
+
+I am describing statistical methods used in this work. Often, it is nice to have
+some figures throughout the document
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=10cm]{figures/correlation}
+\caption{My favorite statistical cartoon \citep{xkcd}.}
+\label{cartoon}
+\end{figure}
+
+Then, later in the text, we may reference Figure \ref{cartoon}.
+
+# Conclusion {#sec:conclusion}
+
+Amazing conclusions will be described in this section.
