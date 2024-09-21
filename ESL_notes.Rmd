@@ -1,0 +1,22 @@
+---
+title: "ESL_notes"
+author: "Ben DeVries"
+date: "2024-09-21"
+header-includes:
+    - \usepackage{bm}
+output: html_document
+---
+
+Bagging:
+
+bootstrap sample b $\bm Z^{*b}, b=1,...,B$
+
+prediction $\hat f^{*b}(x)$ fit to bootstrap sample
+
+Empirical distribution $\mathcal{\hat P}_n(t)$ for n observed data points is $\frac{\text{number of elements in the sample}\le t}{n}$ (binomial)
+
+Theoretical bagging estimate? $E_\mathcal{\hat P}[\hat f^*(x)]$
+
+Monte carlo estimate: $\hat f_{bag}(x)=\frac{1}{B}\sum_{b=1}^B\hat f^{*b}(x)$, asymptotically unbiased.
+
+If original estimate $\hat f(x)$ is linear
