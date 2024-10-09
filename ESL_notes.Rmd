@@ -7,6 +7,8 @@ header-includes:
 output: html_document
 ---
 
+**CHAPTER 8**
+
 **Expectation Maximization for Gaussian Mixture** (272)
 
 $Y_1\sim N(\mu_1,\sigma_1^2)$, $Y_2\sim N(\mu_2,\sigma_2^2)$
@@ -73,14 +75,38 @@ $Pr(\zeta|\bm Z)=\sum_{m=1}^MPr(\zeta|\mathcal{M_m},\bm Z)Pr(\mathcal{M_m}|\bm Z
 
 Bumping uses bootstrap sampling to move randomly through model space. Draw bootstrap samples and fit model to each sample. Choose the model that best fits the original training set.
 
-Idea is if a portion of the data causes a bad fit, a bootstrapped sample with out that portion of the data may result in a better estimated model. Models need relatively similiar levels of complexity.
+Idea is if a portion of the data causes a bad fit, a bootstrapped sample with out that portion of the data may result in a better estimated model. Models need relatively similar levels of complexity.
 
 Are bootstrap samples size of full training set?
 
+**CHAPTER 9**
+
+**Additive Regression**
+
+Form: $E[Y|X_1,X_2,...,X_p]=\alpha+f_1(X_1)+f_2(X_2)+...+f_p(X_p)$, where $f_i$ is a parametric, or smooth nonparametric function.
+
+Semiparametric: $g(\mu)=\bm X^T\bm\beta+\alpha_k+f(Z)$ adds a parametric component and nonparametric component.
+
+$\text{Ave}(\cdot)$ is the average function. Is there a difference between $\text{Ave}(\cdot)$ and $\text{ave}(\cdot)$?
 
 
+$\mathcal{S}_j$ denotes smoothing operator $j$
 
+**Tree-Based Methods**
 
+Binary decision tree: partitions response based on binary decisions about features. For regression, each region has a constant assigned for the prediction. Uses sums of squares for loss.
+
+$\hat c_m$ is the prediction and it is the average of the region of the response.
+
+Tree size is a tuning parameter **hyper hyper parameter?**
+
+Pruning: Using a large tree, remove non terminal nodes one by one to reduce complexity. The complexity cost criterion is given by finding the number of predictions that land in region $m$, multiplying that by the squared loss for these predictions, and summing over all regions of the tree. A penalty term proportional to the tree size is added to the complexity cost criterion. We choose $\alpha$ to minimize the complexity cost via cross validation. Recommended 5 or 10 fold.
+
+More than 2 splits is generally not favorable as data becomes too fragmented.
+
+Tree algorithsm are highly variable because of hierarchical structure. Also results in a non-smooth prediction for regression.
+
+Is the response always in a finite interval for tree algorithms?
 
 
 
