@@ -104,9 +104,8 @@ Pruning: Using a large tree, remove non terminal nodes one by one to reduce comp
 
 More than 2 splits is generally not favorable as data becomes too fragmented.
 
-Tree algorithsm are highly variable because of hierarchical structure. Also results in a non-smooth prediction for regression.
+Tree algorithms are highly variable because of hierarchical structure. Also results in a non-smooth prediction for regression.
 
-Is the response always in a finite interval for tree algorithms?
 
 
 
