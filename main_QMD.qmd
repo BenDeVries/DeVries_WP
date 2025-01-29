@@ -176,7 +176,7 @@ ggplot(mse_both) +
        y = "MSE on New Dataset")
 ```
 
-We see considerably less variation in the mean squared error of random forests fit to the same data as individual decision trees. With this data, some decision trees achieved less error than a random forest. \todo{explain why}. 
+We see considerably less variation in the mean squared error of random forests fit to the same data as individual decision trees. With this data, some decision trees achieved less error than a random forest. \todo{explain why}. Individual decision trees tend to perform poorly with a large number of predictors. Large trees will create complex hierarchies that are unlikely to exist in the true model. The following simulation study shows random forests consistently outperform a single tree for data generated under a linear model with multiple covariates.
 
 ```{r}
 x <- 108 * i * sin(i * 108) + rnorm(length(i), 0, noise)
@@ -298,14 +298,14 @@ sim2_res <- future_apply(matrix(1 : 100), 1, function (a) {
   X_V3 <- X_V1[, 1 : 25]
   X_T4 <- X_T1[, 1 : 4]
   X_V4 <- X_V1[, 1 : 4]
-  Y_T1 <- X_T1 %*% beta + rnorm(100, 0, 1)
-  Y_V1 <- X_V1 %*% beta + rnorm(100, 0, 1)
-  Y_T2 <- X_T2 %*% beta[1 : 50] + rnorm(50, 0, 1)
-  Y_V2 <- X_V2 %*% beta[1 : 50] + rnorm(50, 0, 1)
-  Y_T3 <- X_T3 %*% beta[1 : 25] + rnorm(25, 0, 1)
-  Y_V3 <- X_V3 %*% beta[1 : 25] + rnorm(25, 0, 1)
-  Y_T4 <- X_T4 %*% beta[1 : 4] + rnorm(4, 0, 1)
-  Y_V4 <- X_V4 %*% beta[1 : 4] + rnorm(4, 0, 1)
+  Y_T1 <- X_T1 %*% beta + rnorm(500, 0, 1)
+  Y_V1 <- X_V1 %*% beta + rnorm(500, 0, 1)
+  Y_T2 <- X_T2 %*% beta[1 : 50] + rnorm(500, 0, 1)
+  Y_V2 <- X_V2 %*% beta[1 : 50] + rnorm(500, 0, 1)
+  Y_T3 <- X_T3 %*% beta[1 : 25] + rnorm(500, 0, 1)
+  Y_V3 <- X_V3 %*% beta[1 : 25] + rnorm(500, 0, 1)
+  Y_T4 <- X_T4 %*% beta[1 : 4] + rnorm(500, 0, 1)
+  Y_V4 <- X_V4 %*% beta[1 : 4] + rnorm(500, 0, 1)
   X_V1 <- X_V1 |> as.data.frame()
   X_V2 <- X_V2 |> as.data.frame()
   X_V3 <- X_V3 |> as.data.frame()
