@@ -76,6 +76,7 @@ $$y_i=\cos(108t_i\sin(108t_i+x_i))\cdot\exp(\sin(108t_i\cos(108t_i+x_i)))+x_i$$
 $$X_i\sim N(0,\sigma)$$
 $$t_i=-\frac{\pi}{18},...,\frac{\pi}{18}$$
 $$i=1,2,...,350$$
+
 ```{r cache=TRUE}
 i <- seq(-pi / 18, pi / 18, 0.001)
 noise <- 0
@@ -177,107 +178,6 @@ ggplot(mse_both) +
 ```
 
 We see considerably less variation in the mean squared error of random forests fit to the same data as individual decision trees. With this data, some decision trees achieved less error than a random forest. \todo{explain why}. Individual decision trees tend to perform poorly with a large number of predictors. Large trees will create complex hierarchies that are unlikely to exist in the true model. The following simulation study shows random forests consistently outperform a single tree for data generated under a linear model with multiple covariates.
-
-```{r}
-x <- 108 * i * sin(i * 108) + rnorm(length(i), 0, noise)
-y <- 108 * i * cos(i * 108) + rnorm(length(i), 0, noise)
-
-true0 <- data.frame(
-  x = x,
-  y = y,
-  z = cos(x) * exp(sin(y)) + rnorm(length(i), 0, noise)
-)
-
-noise <- 0.5
-
-x <- 108 * i * sin(i * 108) + rnorm(length(i), 0, noise)
-y <- 108 * i * cos(i * 108) + rnorm(length(i), 0, noise)
-
-true1 <- data.frame(
-  x = x,
-  y = y,
-  z = cos(x) * exp(sin(y)) + rnorm(length(i), 0, noise)
-)
-
-ran0 <- randomForest(data = true1, z ~ i, ntree = 250)
-tree0 <- rpart(data = true1, z ~ i, control = rpart.control(minsplit = 1, minbucket = 1, cp = 0))
-opt_i <- which(tree0$cptable[, 4] == min(tree0$cptable[, 4])) |> as.vector()
-if (length(opt_i) != 1) {
-  opt_i <- opt_i[which(tree0$cptable[opt_i, 2] == min(tree0$cptable[opt_i, 2]))]
-}
-tree1 <- rpart(data = true1, z ~ i,
-               control = rpart.control(minsplit = 1, minbucket = 1, cp = tree0$cptable[opt_i, 1]))
-func_dat <- data.frame(y = true1$z, i = i, Forest = ran0$predicted,
-                       Tree = predict(tree1))
-quant_theme <- theme(panel.background = element_rect(fill = "white"),
-        panel.grid = element_line(colour = "grey"))
-
-ggplot(func_dat) +
-  geom_line(aes(x = i, y = Forest, color = factor("Forest"))) +
-  geom_line(aes(x = i, y = Tree, color = factor("Tree"))) +
-  geom_point(aes(x = i, y = y, color = factor("y")), alpha = 0.2) + 
-  scale_color_manual(
-    values = c("Forest" = "orange", "Tree" = "red", "y" = "darkgreen"),
-    name = "Variables"
-  ) +
-  quant_theme
-```
-
-
-Decision trees
-
-# Methods {#sec:methods}
-
-#tcosθ−f(t)sinθ, y=tsinθ+f(t)cosθ To investigate the effect of sample size and the number of terminal nodes on accuracy
-
-```{r, cache=TRUE}
-noise <- 1
-
-x <- 108 * i * sin(i * 108) + rnorm(length(i), 0, noise)
-y <- 108 * i * cos(i * 108) + rnorm(length(i), 0, noise)
-
-true <- data.frame(
-  x = x,
-  y = y,
-  z = cos(x) * exp(sin(y)) + rnorm(length(i), 0, noise)
-)
-tree0 <- rpart(data = true, z ~ i, control =
-  rpart.control(minsplit = 1, minbucket = 1, cp = 0, minsplit = 1, minbucket = 1))
-plot_ly() |>
-  add_trace(
-    data = true,
-    x = ~ true$x, y = ~ true$y, z = ~ true$z,
-    mode = 'markers',
-    type = 'scatter3d',
-    marker = list(color = 'salmon', size = 6, opacity = 0.5),
-    name = 'True Values'
-  ) |>
-  add_trace(
-    x = true$x, y = ~ true$y, z = ~ predict(tree0),
-    mode = 'markers',
-    type = 'scatter3d',
-    marker = list(color = 'black', size = 2, opacity = 1),
-    name = 'Predictions'
-  ) |>
-  layout(
-    title = "3D Scatter Plot of System With no Noise",
-    scene = list(
-      xaxis = list(title = 'X'),
-      yaxis = list(title = 'Y'),
-      zaxis = list(title = 'Z')
-    )
-  )
-ggplot() +
-  geom_point(aes(x = i, y = true$z)) +
-  labs(title = "Response vs Predictor", x = "Response", y = "Predictor")
-sum((predict(tree0) - true$z) ^ 2)
-```
-
-
-
-
-
-
 
 ```{r cache=TRUE}
 plan(multisession)
@@ -384,6 +284,56 @@ ggplot(data = sim_dat) +
   labs(y = "MSE", x = "",
        title = "MSE for Random Forest and Individual Tree Models")
 ```
+
+```{r}
+x <- 108 * i * sin(i * 108) + rnorm(length(i), 0, noise)
+y <- 108 * i * cos(i * 108) + rnorm(length(i), 0, noise)
+
+true0 <- data.frame(
+  x = x,
+  y = y,
+  z = cos(x) * exp(sin(y)) + rnorm(length(i), 0, noise)
+)
+
+noise <- 0.5
+
+x <- 108 * i * sin(i * 108) + rnorm(length(i), 0, noise)
+y <- 108 * i * cos(i * 108) + rnorm(length(i), 0, noise)
+
+true1 <- data.frame(
+  x = x,
+  y = y,
+  z = cos(x) * exp(sin(y)) + rnorm(length(i), 0, noise)
+)
+
+ran0 <- randomForest(data = true1, z ~ i, ntree = 250)
+tree0 <- rpart(data = true1, z ~ i, control = rpart.control(minsplit = 1, minbucket = 1, cp = 0))
+opt_i <- which(tree0$cptable[, 4] == min(tree0$cptable[, 4])) |> as.vector()
+if (length(opt_i) != 1) {
+  opt_i <- opt_i[which(tree0$cptable[opt_i, 2] == min(tree0$cptable[opt_i, 2]))]
+}
+tree1 <- rpart(data = true1, z ~ i,
+               control = rpart.control(minsplit = 1, minbucket = 1, cp = tree0$cptable[opt_i, 1]))
+func_dat <- data.frame(y = true1$z, i = i, Forest = ran0$predicted,
+                       Tree = predict(tree1))
+quant_theme <- theme(panel.background = element_rect(fill = "white"),
+        panel.grid = element_line(colour = "grey"))
+
+ggplot(func_dat) +
+  geom_line(aes(x = i, y = Forest, color = factor("Forest"))) +
+  geom_line(aes(x = i, y = Tree, color = factor("Tree"))) +
+  geom_point(aes(x = i, y = y, color = factor("y")), alpha = 0.2) + 
+  scale_color_manual(
+    values = c("Forest" = "orange", "Tree" = "red", "y" = "darkgreen"),
+    name = "Variables"
+  ) +
+  quant_theme
+```
+
+
+# Methods {#sec:methods}
+
+
 
 ```{=tex}
 \begin{figure}[h]
