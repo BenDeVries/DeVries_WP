@@ -1,5 +1,5 @@
 import ee
-from IPython.display import display, Image
+from IPython.display import Image
 
 ee.Authenticate()
 ee.Initialize(project='ee-bdevries252')

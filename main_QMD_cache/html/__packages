@@ -20,3 +20,10 @@ mnormt
 DiagrammeR
 future
 future.apply
+nlme
+survival
+BART
+matrixStats
+ggnewscale
+sp
+raster

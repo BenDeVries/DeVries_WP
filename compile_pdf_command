@@ -1,0 +1,1 @@
+QUARTO_CHROMIUM_HEADLESS_MODE=new quarto render ~/DeVries_WP/main_QMD.qmd --to all
