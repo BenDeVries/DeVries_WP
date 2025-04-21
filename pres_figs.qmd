@@ -1,0 +1,182 @@
+---
+title: "pres_figs"
+format: pdf
+---
+
+```{mermaid}
+%%| label: fig-tree-examp
+%%| fig-cap: Visualization of binary decision tree
+
+flowchart TD
+ subgraph move[" "]
+        A4["$$T_b^{proposed}$$"]
+        B4["$$X_1\ge x_{1,i}$$"]
+        C4["$$X_5\ge x_{5,j}$$"]
+        D4["$$X_1\ge x_{1,l}$$"]
+        E4["$$\mu_1$$"]
+        F4["$$\mu_2$$"]
+        G4["$$\mu_3$$"]
+        H4["$$X_4\ge x_{4,k}$$"]
+        I4["$$\mu_4$$"]
+        J4["$$\mu_5$$"]
+        A3["$$T_b^{proposed}$$"]
+        B3["$$X_1\ge x_{1,i}$$"]
+        C3["$$X_5\ge x_{5,j}$$"]
+        D3["$$X_3\ge x_{3,m}$$"]
+        E3["$$\mu_1$$"]
+        F3["$$\mu_2$$"]
+        G3["$$\mu_3$$"]
+        H3["$$X_4\ge x_{4,k}$$"]
+        I3["$$\mu_4$$"]
+        J3["$$\mu_5$$"]
+        A2["$$T_b^{proposed}$$"]
+        B2["$$X_1\ge x_{1,i}$$"]
+        C2["$$X_5\ge x_{5,j}$$"]
+        D2["$$X_4\ge x_{4,k}$$"]
+        E2["$$\mu_1$$"]
+        F2["$$\mu_2$$"]
+        G2["$$\mu_3$$"]
+        H2["$$\mu_{4, 5\ combined}$$"]
+        A1["$$T_b^{proposed}$$"]
+        B1["$$X_1\ge x_{1,i}$$"]
+        C1["$$X_5\ge x_{5,j}$$"]
+        D1["$$X_1\ge x_{1,l}$$"]
+        E1["$$\mu_1$$"]
+        F1["$$X_2\ge x_{2,n}$$"]
+        K1["$$\mu_{7}$$"]
+        L1["$$\mu_{5}$$"]
+        G1["$$\mu_3$$"]
+        H1["$$X_4\ge x_{4,k}$$"]
+        I1["$$\mu_4$$"]
+        J1["$$\mu_5$$"]
+  end
+ subgraph s2[" "]
+        START0["Choose grow, prune, change, or swap for Metropolis-Hastings proposal"]
+        PR1["$$\text{Pr(grow)=0.25}$$"]
+        PR2["$$\text{Pr(prune)=0.25}$$"]
+        PR3["$$\text{Pr(change)=0.4}$$"]
+        PR4["$$\text{Pr(swap)=0.1}$$"]
+  end
+ subgraph growStart["Tree $$\ b\ $$ Current Strucutre"]
+        B["$$X_1\ge x_{1,i}$$"]
+        C["$$X_5\ge x_{5,j}$$"]
+        D["$$X_4\ge x_{4,k}$$"]
+        E["$$\mu_1$$"]
+        F["$$\mu_2$$"]
+        G["$$\mu_3$$"]
+        H["$$X_1\ge x_{1,l}$$"]
+        I["$$\mu_4$$"]
+        J["$$\mu_5$$"]
+        A["$$T_b^{Curr}$$"]
+  end
+    A --> START0
+    START0 --> PR1 & PR2 & PR3 & PR4
+    B -- Yes --> C
+    B -- No --> D
+    C -- Yes --> E
+    C -- No --> F
+    D -- Yes --> G
+    D -- No --> H
+    H -- Yes --> I
+    H -- No --> J
+    PR1 --> A1
+    A1 --> B1
+    B1 -- Yes --> C1
+    B1 -- No --> D1
+    C1 -- Yes --> E1
+    C1 -- No --> F1
+    D1 -- Yes --> G1
+    D1 -- No --> H1
+    H1 -- Yes --> I1
+    H1 -- No --> J1
+    F1 -- Yes --> K1
+    F1 -- No --> L1
+    PR2 --> A2
+    A2 --> B2
+    B2 -- Yes --> C2
+    B2 -- No --> D2
+    C2 -- Yes --> E2
+    C2 -- No --> F2
+    D2 -- Yes --> G2
+    D2 -- No --> H2
+    PR3 --> A3
+    A3 --> B3
+    B3 -- Yes --> C3
+    B3 -- No --> D3
+    C3 -- Yes --> E3
+    C3 -- No --> F3
+    D3 -- Yes --> G3
+    D3 -- No --> H3
+    H3 -- Yes --> I3
+    H3 -- No --> J3
+    PR4 --> A4
+    A4 --> B4
+    B4 -- Yes --> C4
+    B4 -- No --> D4
+    C4 -- Yes --> E4
+    C4 -- No --> F4
+    D4 -- Yes --> G4
+    D4 -- No --> H4
+    H4 -- Yes --> I4
+    H4 -- No --> J4
+
+    classDef hidden display: none
+    style D4 stroke:#00C853
+    style H4 stroke:#00C853
+    style D3 stroke:#00C853
+    style H2 stroke:#00C853
+    style F1 stroke:#00C853
+    style K1 stroke:#00C853
+    style L1 stroke:#00C853
+    style s2 stroke:none,fill:none
+    style move stroke:none,fill:none
+    style growStart stroke:none,fill:none
+```
+
+```{mermaid}
+flowchart LR
+ subgraph Flowchart["Bayesian Backfitting for BART"]
+ direction LR
+        A["Initialize trees as stump"]
+        B["Propose new structure for $$\ T_b|T_{(b)},\sigma\iff T_1|R_b,\sigma$$"]   
+        C["Accept/reject proposal based on Metropolis-Hastings algorithm"]
+        D["Update terminal nodes $$\ M_b|T_b,R_b,\sigma$$"]
+  end
+ subgraph Model["BART Model"]
+ direction LR
+        M["$$y_i\sim N(\sum_{b=1}^m g(\bm x_i;T_b,M_b), \sigma^2)$$"]
+        A1["$$p((T_1, M_1), (T_2, M_2),...,(T_m, M_m),\sigma^2)=p(\sigma^2)\prod_{b=1}^mp(M_b|T_b)p(T_b)$$"]
+        B1["$$p(M_b|T_b)=\prod_{l=1}^{|M_b|}p(\mu_{lb}|T_b))$$"]
+        C1["$$p(\sigma^2)\sim\nu\lambda/\chi^2_\nu$$"]
+        S1["$$\nu,\lambda:\text{ Pr}(\sigma\lt\hat\sigma)=q$$"]
+        D1["$$p(\mu_{lb}|T_b)\sim N(|M|\mu_\mu,|M|\sigma^2_\mu)$$"]
+        E1["$$\min(Y)=|M|\mu_\mu-k\sqrt{|M|}\sigma_\mu$$"]
+        F1["$$\max(Y)=|M|\mu_\mu-k\sqrt{|M|}\sigma_\mu$$"]
+        G1["$$p(\text{node is non-terminal})\sim\alpha(1+d)^{-\beta}$$"]
+        H1["Discrete uniform prior over variables for split"]
+        I1["Discrete uniform prior over observed values of chosen split variable for cutoff"]
+        J1["Choose $$\ \mu_\mu=0$$"]
+        K1["$$\sigma_\mu=\frac{0.5}{k\sqrt{|M|}}$$"]
+ end
+A --> B
+B --> C
+C --> D
+D -- Cycle through remaining trees --> B
+M ~~~ A1
+A1 ~~~ B1
+B1 ~~~ D1
+D1 ~~~ C1
+S1 --> C1
+G1 ~~~ H1
+H1 ~~~ I1
+E1 --> J1
+F1 --> J1
+J1 --> K1
+
+
+
+
+style Flowchart stroke:none,fill:none
+style Model stroke:none,fill:none
+```
+
