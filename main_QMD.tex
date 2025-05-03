@@ -68,46 +68,6 @@
 \fi
 \makeatother
 
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{241,243,245}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
-\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
@@ -122,17 +82,15 @@
 \makesavenoteenv{longtable}
 \usepackage{graphicx}
 \makeatletter
-\newsavebox\pandoc@box
-\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
-  \sbox\pandoc@box{#1}%
-  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
-  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
-  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
-  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
-  \else\usebox{\pandoc@box}%
-  \fi%
-}
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 % Set default figure placement to htbp
+\makeatletter
 \def\fps@figure{htbp}
 \makeatother
 
@@ -167,13 +125,14 @@
 \newcommand{\PR}{\mathrm{P}}
 \newcommand{\R}{\mathbb{R}}
 
+
 \newcommand{\todo}[1]{\payAttention{red}{TODO}{#1}}
 
 % Identifying information
 \newcommand{\myname}{Ben DeVries}
 \newcommand{\myadvisor}{Andy Hoegh}
 \newcommand{\wprojcoord}{Ian Laga}  % Current Writing Project Coordinator
-\newcommand{\maintitle}{Tree Based Learning Models Applied to Flying Fox Areal Data}
+\newcommand{\maintitle}{Tree Based Models Applied to Flying Fox Areal Data}
 \newcommand{\mydate}{Date of completion here as Month Day, Year}
 
 \KOMAoption{captions}{tableheading}
@@ -219,6 +178,9 @@
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
 
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
 \usepackage[]{natbib}
 \bibliographystyle{plainnat}
 \usepackage{bookmark}
@@ -226,7 +188,6 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
-  pdftitle={DeVries Writing Project},
   colorlinks=true,
   linkcolor={blue},
   filecolor={Maroon},
@@ -235,12 +196,10 @@
   pdfcreator={LaTeX via pandoc}}
 
 
-\title{DeVries Writing Project}
 \author{}
 \date{}
 
 \begin{document}
-\maketitle
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Title page
@@ -328,83 +287,162 @@ Date& \wprojcoord \\
 
 \section{Introduction}\label{sec:intro}
 
-\citep{encyclo} tells us a flying fox is a large type of fruit bat.
-There are about 65 species found on tropical islands from Madagascar to
-Australia and Indonesia, as well as in parts of mainland Asia. Our
-interest in flying foxes stems from the Hendra virus, which is endemic
-to the four species of flying foxes in Australia. This rare virus is
-zoonotic, meaning it can be transferred from animals to humans. There is
-a fairly low chance of a bat transmitting Hendra virus to a person.
-Humans infected with Hendra virus have come into contact with horses
-exposed to waste/bodily fluids from flying foxes. In Pathogen Spillover
-Driven By Rapid Changes in Bat Ecology, \citep{andy_art} identified loss
-of flying fox habitat and climate as influential factors in Hendra virus
+Flying foxes are a fruit bat, with around 65 species native to parts of
+Asia, Australia, and Africa. In this project, we examine a population of
+grey headed, and black flying foxes surrounding Ballina, New South Wales
+Australia. Our interest in flying foxes stems from the Hendra virus,
+which is endemic to the four species of flying foxes in Australia. This
+rare virus is zoonotic, meaning it can be transferred from animals to
+humans. There is a fairly low chance of bats transmitting Hendra virus
+directly to people. Humans who have been infected with Hendra virus have
+come into contact with horses exposed to waste/bodily fluids from flying
+foxes.
+
+Spreading a disease through an intermediate host of another species is
+referred to as a disease spillover. In \emph{Pathogen Spillover Driven
+By Rapid Changes in Bat Ecology}, \cite{andy_art} identified loss of
+flying fox habitat and climate as influential factors in Hendra virus
 spillovers. Loss of habitat and climate both effect the availability of
-food and water, leading bats to venture into farmland. In this project
-we explore potential associations between land cover and flying fox
-feeding locations. To assess the impact of land cover on feeding
-locations, we apply \citep{bart_paper} Bayesian Additive Regression
-Trees (BART). A large portion of this project is devoted to learning
-about tree algorithms, and tools used to work with spatial data.
+food and water, leading bats to venture into farmland and contaminate
+water/food supplies intended for horses. Understanding what factors
+influence flying fox feeding locations is thus naturally important to
+public health. For our analysis, we examine the feeding locations of the
+previously mentioned flying fox population, assessing whether any
+associations with land cover may be drawn.
+
+Our data on flying fox feeding locations is sourced from (). Data was
+collected using a Robin radar, perched upon a hill within Ballina. The
+radar is able to track many objects at once, providing us with the
+flight path, velocity, classification, and other details. Traditionally,
+human observers have been used to record location information for bats.
+Manual counting is obviously labor intensive, and potentially less
+precise than radar; especially after considering both black and
+grey-headed flying foxes are nocturnal. It's easy to imagine potential
+challenges in counting clouds of bats at dark. Additionally, the Robin
+radar observes a larger region than manual observation. Instead of
+counts at discrete observation sites, the Robin radar provides points
+over a continuous space.
+
+When exploring associations, background information is always important.
+\cite{queens_lc} examined the potential spatio-temporal relationship
+between changes in land cover and flying fox roost sites in Queensland,
+Australia. In Kolkata, India, \cite{indian_lc} analyzed types of trees
+and urban structures that attracted flying foxes with ANOVA. Both of
+these studies utilized highly detailed land cover data that involved
+manual survey. They also focused on differences in similar types of land
+cover, whereas our land cover classes are broader but less specific. Our
+end goal is not to perfectly describe the effects of land cover, but
+rather to see what types of land cover may be associated with flying fox
+feeding locations. Focusing on exploration, we turn to tree based models
+due to their inferential capabilities and modelling flexibility.
+
+We begin with a brief review of supervised learning before discussing
+Classification and Regression Trees (CART) \cite{cart} along with
+several models inspired by CART. Next, our attention shifts to tools for
+obtaining and preparing data for our analysis. In this project we use
+Google Earth Engine to obtain our covariates, and access the response
+from an archived PostgreSQL database. Finally, we apply Bayesian
+Additive Regression Trees (BART) \cite{bart_paper} to analyze the
+feeding locations of flying foxes.
+
+\section{Background}\label{sec:background}
+
+\subsection{Supervised Learning}\label{supervised-learning}
 
 In traditional regression models we assume some sort of relationship
 between the response, variables of interest, and controlling factors.
 Exploratory data analysis, background information, and model
 experimentation can bring light to potential relationships, but many
 problems involve unobservable dynamics that are difficult or impossible
-to capture via a linear model. In some cases it is often necessary to
-take a more algorithmic approach to modelling. Unfortunately, many
+to capture via a parametric model. In some cases it is often necessary
+to take a more algorithmic approach to modelling. Unfortunately, many
 models in the algorithmic framework are referred to as black boxes,
 indicating the inner workings of a fitted model are difficult or
-impossible to explain in a meaningful way. Decision tree ensembles sit
-within the black box framework, but the explainability of individual
-trees has lead to establishing variable importance and interaction
-measures along with other useful tools for inference. It is still very
-difficult to interpret the effects of individual predictors in these
-models, as the hierarchical structure can make marginal effects very
-missleading. Still, variable importance measures combined with
-predictive accuracy make ensembles of trees a great tool for exploratory
-analysis. Our project starts with a brief review of supervised learning
-before discussing Classification and Regression Trees (CART)
-\citep{cart} along with several models inspired by CART. Next, our
-attention shifts to tools for obtaining and preparing data for our
-analysis. In this project we use Google Earth Engine to obtain our
-covariates, and access the response from an archived PostgreSQL
-database. Finally, we apply BART to analyze the feeding locations of
-flying foxes and assess the predictive accuracy of our model.
+impossible to explain in a meaningful way.
 
-\section{Background}\label{sec:background}
+Whether we choose to focus on predictive or explanatory modelling comes
+down to our end goal, and often there is some degree of balancing the
+two. For example, let's think about a model to classify whether someone
+has a disease. Obviously we care about the predictive capabilities. If
+the model is less accurate than an informed guess, it's not particularly
+useful. Focusing solely on prediction and ignoring explainability, we
+might implement a support vector machine. The support vector machine
+model would project patients measurements into a higher dimensional
+space and construct a hyper plane that separates the features into two
+groups, diseased/not diseased. Now if a doctor were to tell his patient,
+``We projected your measurements into a high dimensional space and
+unfortunately you fell on the wrong side of the hyperplane'', the
+patient is almost certainly walking out.
 
-\subsection{Supervised Learning}\label{supervised-learning}
+Our doctor can soften the delivery; for example, they might adjust a
+patient's data and use the trained support vector machine to see how
+changes affect the predicted outcome. But patients are likely to ask how
+these changes impact their disease status. Logistic regression is a
+great example of an explainable model. Using the logistic regression
+model, the doctor might tell his patient ``Looking at individuals
+similar to yourself, we've found an extra 30 minutes of exercise is
+associated with decreasing the odds of disease by a factor of X'' Our
+doctor still has to interpret a mathematical formula; and odds may be
+somewhat abstract to the patient, but there is a concise explanation.
 
-With this project, we chose to focus on tree based methods. The Elements
-of Statistical Learning \citep{esl} was a key source for understanding
-algorithms and concepts in statistical learning. Our background
-discussion begins with some notation and concepts in supervised
-learning. We then discuss the algorithms for several models, using
-simulation to demonstrate there use. In supervised learning problems we
-work to map a set of features to a target. When discussing these
-components, we'll follow the notation used in The Elements of
-Statistical Learning \citep{esl}. \(X\) denotes the features while \(Y\)
-and \(G\) denote the target for quantitative and categorical responses
-respectively. If there are \(N\) observations of \(p\) inputs, then
-\(\bm X\) is an \(N\times p\) matrix. The inputs for the \(i\)'th
+Decision tree ensembles sit within the black box framework, but the
+explainability of individual trees has lead to establishing variable
+importance and interaction measures along with other useful tools for
+inference. It is still very difficult to interpret the effects of
+individual predictors in these models, as the hierarchical structure can
+make marginal effects very misleading. Still, variable importance
+measures combined with predictive accuracy make ensembles of trees a
+great tool for exploratory analysis.
+
+Working with ensembles of trees, the models are not explainable in a
+meaningful way as a individual prediction may involve hundreds or
+thousands of decisions. We forego explaining an ensemble's reasoning and
+instead ask two questions: How accurate is the model? And which
+variables were useful in the model? If our model can make good
+predictions, then variables deemed important have some sort of
+association with our response, even if it's indirect.
+
+Prediction based modelling has led to the development of a variety of
+algorithms that focus on fitting the data as opposed to explaining it.
+These algorithms can be much more complex than linear models. \emph{The
+Elements of Statistical Learning} \cite{esl} was a key source for
+understanding algorithms and concepts in statistical learning. This text
+demonstrates situation where classic statistical models fall short,
+showing how complex models can solve intricate problems. Algorithms are
+explained in rigorous detail, while still providing intuition to
+implementations and capabilities.
+
+Our background discussion begins with some notation and concepts in
+supervised learning. We then discuss the algorithms for several models,
+using simulation to demonstrate their use. In supervised learning
+problems, the goal is to map a set of features to a target. When
+discussing these components, we'll follow the notation used in \emph{The
+Elements of Statistical Learning} \cite{esl}. \(X\) denotes a features
+while \(Y\) and \(G\) denote the target for quantitative and categorical
+responses respectively. If there are \(N\) observations of \(p\) inputs,
+then \(\bm X\) is an \(N\times p\) matrix. The features for the \(i\)th
 observation are \(\bm x_i\) while \(\bm x_j\) denotes the vector of all
-observations for the \(j\)'th input.
+observations for the \(j\)'th feature.
 
 A common approach in supervised learning is to assume our features and
 target are observation of random variables with joint distribution
 \(\text{Pr}(Y,X)\). \(G\) would replace \(Y\) in a classification
-problem and \(\bm X\) would replace \(X\) for multiple covariates. We
-want to find a function \(f:\mathcal{X}\rightarrow\mathcal{Y}\) that
-predicts \(Y\) reasonably well. To do this, we define a loss function
+problem and \(\bm X\) would replace \(X\) for multiple covariates.
+Letting \(\mathcal{X,\ Y}\) denote the supports of \(X, Y\), we want to
+find a function \(f:\mathcal{X}\rightarrow\mathcal{Y}\) that predicts
+\(Y\) reasonably well. To do this, we define a loss function
 \(L(Y,f(X))\) which penalizes the prediction error on a training set
-\(\boldsymbol \tau=(x_i,y_i),\ i=1,2,...,N\). The expected prediction
-error (EPE) is defined as \(\mathbb{E}[L(Y,f(X))]\). Our overall goal is
-to approximate the function \(f\) that minimizes the EPE. Using squared
-errors for loss \((L_2)\), the EPE is minimized by choosing \(f\) such
-that \(f(x)=\mathbb{E}[Y|X=x]\) (The Elements of Statistical Learning,
-pg. 18 \citep{esl}). Now we need an algorithm to approximate \(f\) using
+\(\boldsymbol \tau=(\bm x_1,y_1),...,(\bm x_N,y_N)\).
+
+Our choice of loss function determines the optimal solution to the
+problem. The expected prediction error (EPE) is defined as
+\(\mathbb{E}[L(Y,f(X))]\). Our overall goal is to approximate the
+function \(f\) that minimizes the EPE. Using squared errors for loss
+\((L_2)\), the EPE is minimized by choosing \(f\) such that
+\(f(x)=\mathbb{E}[Y|X=x]\) (The Elements of Statistical Learning, pg. 18
+\cite{esl}).
+
+Now we need an algorithm to approximate \(f\) using
 \(\boldsymbol \tau\). Choosing an appropriate algorithm will be heavily
 influenced by the availability and distribution of data. With a
 quantitative target, we might be able to assume an additive error
@@ -415,37 +453,41 @@ The additive error model is simply \(Y=f(\bm X)+\epsilon\) where
 assuming the process that generated \(Y\) can be approximated using
 \(\bm X\) such that the error due to ignored features and other factors
 has mean zero. For data that was generated under an additive error
-model, a natural approach to approximate \(f\) is to use a sum of basis
-functions. The additive model is defined as
-\(Y=\beta_0+\sum_{j=1}^pf_j(\bm x_j)+\epsilon\). In this model, each
-\(f_j\) could be a sum of basis functions. The major limitation to an
-additive model is we assume no interactions between features. There's no
-reason we can't add interactions or functions of multiple covariates,
-but identifying these interactions is difficult. We might be able to fit
-a model with select transformations of covariates and every possible
-interaction, but this would almost certainly result in overfitting.
-Assuming a generating model with any form of noise implies even the
-optimal \(f\) will not predict every observation perfectly. A model is
-overfit when trends are ignored to explain slight irregularities in a
-sample. Discerning irregularities is highly subjective. Any decision we
-make based on observed data may lead to overfitting. To compare models
-predictive capability, we use data that has been held out from training
-to obtain a sample of prediction errors. With this sample, we can use
-some metric (usually based on our loss function) for model validation.
+model, a natural approach to approximate \(f\) is to use a linear
+combination of basis functions. A set of functions \(\mathcal{B}\) form
+a basis if for every function \(f:\mathcal{X}\rightarrow\mathcal{Y}\),
+there exists a unique linear combination of elements of \(\mathcal{B}\)
+that is equal to \(f\). The additive model is defined as
+\(Y=\beta_0+\sum_{j=1}^pf_j(\bm x_j)+\epsilon\).
+
+One limitation of an additive model is we assume no interactions between
+features. There's no reason we can't add interactions or functions of
+multiple covariates, but identifying these interactions is difficult. We
+might be able to fit a model with select transformations of covariates
+and every possible interaction, but this would almost certainly result
+in overfitting. Assuming a generating model with any form of noise
+implies even the optimal \(f\) will not predict every observation
+perfectly. A model is overfit when trends are ignored to explain slight
+irregularities in a sample. Discerning irregularities is highly
+subjective. Any decision we make based on observed data may lead to
+overfitting. To compare models predictive capability, we use data that
+has been held out from training to obtain a sample of prediction errors.
+With this sample, we can use some metric (usually based on our loss
+function) for model validation.
 
 There are a variety of methods to perform model validation, but the two
-most common are hold out and K-fold. In hold out, some portion of the
-data is held out for testing and the rest is used to fit the model. If
-the model contains hyper parameters, we could split the data into
-training, validation, and testing. Fitting models to the training set,
-we can try various values for hyper parameters and compare model
-performance for predictions on the validation set. After we determine
-the optimal hyper parameter values, we refit the model on the combined
-training and validation set before using the testing set to assess the
-final fit. In some cases, additional tuning may be required after
-combining training and validation as additional training data may change
-the optimal values of hyperparameters. Using training/testing splits is
-generally favored for computationally intensive problems with
+most common are hold out and K-fold cross validation. In hold out, some
+portion of the data is held out for testing and the rest is used to fit
+the model. If the model contains hyper parameters, we could split the
+data into training, validation, and testing. Fitting models to the
+training set, we can try various values for hyper parameters and compare
+model performance for predictions on the validation set. After we
+determine the optimal hyper parameter values, we refit the model on the
+combined training and validation set before using the testing set to
+assess the final fit. In some cases, additional tuning may be required
+after combining training and validation as additional training data may
+change the optimal values of hyperparameters. Using training/testing
+splits is generally favored for computationally intensive problems with
 observations to spare. The primary disadvantage to hold out validation
 is we can't use as much data for training.
 
@@ -459,18 +501,9 @@ more computationally expensive. Additionally, K-fold does not assess the
 final model fit as parameter estimates will change as the model is
 refit. For models with low variance, representativeness of the available
 data is really the only concern. If there is a lot of variation in
-estimated parameters across folld, our cross validation becomes more of
+estimated parameters across folds, our cross validation becomes more of
 an assessment of the theoretical as opposed to fit model. This can still
 useful for model selection and refinement.
-
-So far we have discussed a general approach to problems centered around
-prediction. In the next subsection we explore the intuition behind tree
-based algorithms, beginning with Classification and Regression Trees
-(CART), \citep{cart}. Later, we turn our attention to tree based models
-fit with Bayesian methods. Our primary focus will be on the Random
-forests, developed by \citep{random_forest} and Bayesian Additive
-Regression Trees (BART), credited to \citep{bart_paper}. Direct
-predecessors of these two algorithms are discussed as well.
 
 \subsection{Decision Trees}\label{decision-trees}
 
@@ -481,23 +514,24 @@ models. In this case the decision tree model is a step function. Unlike
 our mean only models for linear regression, we do not make any
 distributional assumptions. Without a distribution, we can't quantify
 the uncertainty in our predictions. Additionally, the binary structure
-of trees makes the effects of individual predictors less interpretable
-than a linear model. Small changes in a feature \(x_{i,j}\) may not
-effect the associated prediction \(\hat y_i\). On the other hand, trees
-greatly outperform linear models with more complex data. The
-hierarchical structure naturally handles multicollinearity, and can help
-us find interactions between covariates. Even though we don't believe
-\(\bm X\) is related to \(\bm y\) by a step function, we can gain
-insight to the true relationship by a step function approximation. An
-example of a tree model is shown in Figure~\ref{fig-tree-examp}. Every
-decision after the top root node is conditioned on the previous
-decisions, allowing us to display the hierarchy graphically.
+of trees changes the interpretation of effects. Small changes in a
+continuous feature \(x_{i,j}\) may not effect the associated prediction
+\(\hat y_i\). The mathematical relationship defining a linear model is
+highly informative, but rather rigid. Trees greatly outperform linear
+models with more complex data. A hierarchical structure naturally
+handles multicollinearity, and can help us find interactions between
+covariates. Even though we don't believe \(\bm X\) is related to
+\(\bm y\) by a step function, we can gain insight to the true
+relationship by a step function approximation. An example of a tree
+model is shown in Figure~\ref{fig-tree-examp}. Every decision after the
+top root node is conditioned on the previous decisions, allowing us to
+display the hierarchy graphically.
 
 \begin{figure}[H]
 
 \centering{
 
-\includegraphics[width=4.31in,height=4.34in]{main_QMD_files/figure-latex/mermaid-figure-1.png}
+\includegraphics{figures/mermaid-figure-1.png}
 
 }
 
@@ -505,39 +539,48 @@ decisions, allowing us to display the hierarchy graphically.
 
 \end{figure}%
 
-Step functions are very flexible and for any training set \(\bm X\) with
-target \(Y\) where \(y_i|\bm X_i= y_j|\bm X_i\) for all \(i,j\), we can
-fit a tree that will have no error on the training set. With this
-flexibility, over fitting is a major concern. We can control the overall
-size and shape of trees with three hyper-parameters. First is the
-complexity parameter \(\alpha\). \(\alpha\) scales the penalty which is
-based on the number of terminal nodes (mean only models). Next we have
-the minimum split and minimum bucket sizes. The minimum bucket is the
-fewest number of observations allowed in a terminal node. Similarly, the
-minimum split is the least number of observations allowed in one outcome
-of a binary decision. We generally choose the complexity parameter by
-growing the largest possible tree, then removing terminal nodes with
-fewer observations. Next we compare the trees via cross validation and
-choose the tree with minimal cross validated error. This process of
-choosing an appropriate tree size is commonly referred to as pruning.
-While pruning helps reduce the risk of over fitting, large regression
-trees are inherently unstable. We'll demonstrate this with data
-simulated under the model described below. The rpart function developed
-by \citep{rpart} is used to fit our CART model. A simulated testing data
-set displaying the true function along with the fit from a tree chosen
-by cross validation on training is displayed in
-Figure~\ref{fig-sim1-pred-vis}. Figure~\ref{fig-sim1-tree} displays the
-number of splits for the optimal number of splits chosen by cross
-validation.
-\[y_i=\cos(108t_i\sin(108t_i+w_i))\cdot\exp(\sin(108t_i\cos(108t_i+x_i)))+z_i\]
-\[W_i,X_i,Z_i\sim N(0,\sigma^2)\]
-\[t_i=-\frac{\pi}{18},...,\frac{\pi}{18}\] \[i=1,2,...,350\]
+Step functions are very flexible. If there exists a function that can
+map the features of our training data to the observed response, then we
+can represent said function with a decision tree and achieve zero error
+over \(\bm \tau\). With this flexibility, over fitting is a major
+concern. We can control the overall size and shape of trees with three
+hyper-parameters. First is the complexity parameter \(\alpha\).
+\(\alpha\) scales the penalty which is based on the number of terminal
+nodes (mean only models). Next we have the minimum split and minimum
+bucket sizes. The minimum bucket is the fewest number of observations
+allowed in a terminal node. Similarly, the minimum split is the least
+number of observations allowed in one outcome of a binary decision. We
+generally choose the complexity parameter by growing the largest
+possible tree, then removing terminal nodes with fewer observations.
+Next we compare the trees via cross validation and choose the tree with
+minimal cross validated error. This process of choosing an appropriate
+tree size is commonly referred to as pruning. While pruning helps reduce
+the risk of over fitting, large regression trees are inherently
+unstable.
+
+When we say trees are unstable, we are essentially saying that a small
+change to the data can result in a wildly different fit. We demonstrate
+the variability in the structure of trees with a simulation study. Data
+for the simulation study is generated under the model defined by
+equations 1-4.
+
+\begin{equation}\phantomsection\label{eq-a}{y_i=\cos(108t_i\sin(108t_i+w_i))\cdot\exp(\sin(108t_i\cos(108t_i+x_i)))+z_i}\end{equation}
+\[W_i,X_i,Z_i\sim N(0,\sigma^2)\] \#eq-b\}
+\begin{equation}\phantomsection\label{eq-c}{t_i=-\frac{\pi}{18},...,\frac{\pi}{18}}\end{equation}
+\begin{equation}\phantomsection\label{eq-d}{i=1,2,...,350}\end{equation}
+
+The rpart function developed by \cite{rpart} is used to fit our CART
+model. A simulated testing data set displaying the true function along
+with the fit from a tree chosen by cross validation on training is
+displayed in Figure~\ref{fig-sim1-pred-vis}. Figure~\ref{fig-sim1-tree}
+displays the number of splits for the optimal complexity parameter
+chosen by cross validation.
 
 \begin{figure}[H]
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{main_QMD_files/figure-pdf/fig-sim1-pred-vis-1.png}}
+\includegraphics{main_QMD_files/figure-pdf/fig-sim1-pred-vis-1.png}
 
 }
 
@@ -550,81 +593,84 @@ predictions}
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{main_QMD_files/figure-pdf/fig-sim1-tree-1.png}}
+\includegraphics{main_QMD_files/figure-pdf/fig-sim1-tree-1.png}
 
 }
 
-\caption{\label{fig-sim1-tree}Violin plots of optimal number of splits
-for simulated data}
+\caption{\label{fig-sim1-tree}CART models can struggle with noisy data.}
 
 \end{figure}%
 
 Decision trees are very unstable for this data. Across all three noise
 levels, the number of splits chosen by cross validation ranges from zero
 to over 300. The variability in the size/structure of trees suggest we
-can't have much faith in predictions from an individual tree. A simpler
-model will be less variable, but more biased. To maintain low bias and
-reduce variance, we turn our attention to ensemble methods. Ensemle
-methods are quite prevalent in predictive modelling. By combining the
+can't have much faith in predictions from an individual tree. Slight
+changes to the data could result in a completely different tree
+structure, meaning our model may generalize poorly. A simpler model will
+be less variable, but more biased. To maintain low bias and reduce
+variance, we turn our attention to ensemble methods. Ensemble methods
+are quite prevalent in predictive modelling. By combining the
 predictions from several models, we can reduce the variance of
 predictions while capturing complex intricacies of the data.
 
-The Random Forests algorithm, developed by \citep{random_forest}, is a
+The random forests algorithm, developed by \cite{random_forest}, is a
 CART-based ensemble combining Bootstrap Aggregating (Bagging)
-\citep{bagging} and Ho's Random Decision Forests \citep{Ho}. Bagging is
+\cite{bagging} and Ho's random decision forests \cite{Ho}. Bagging is
 simply averaging the predictions of models fit to bootstrapped samples.
 When possible, we obtain \(\hat y_i\) from averaging trees where
-\(\bm x_i\) did not appear in training. These predictions are reffered
+\(\bm x_i\) did not appear in training. These predictions are referred
 to as ``out of bag predictions''. Cross validation on out of bag
 predictions is not required as they are not based on the observed values
 of \(\bm x_i\).
 
-On pages 271-272 of Elements of Statistical Learning, \citep{esl} show
-that the distribution of bootstrap means for infinite samples from a
-normal population is equivalent to to the Bayesian posterior
-distribution with a non-informative prior. They also demonstrate that
-for the multinomial likelihood, the bootstrap distribution with infinite
-draws from the population approximates the Bayesian posterior assuming
-all outcomes are equi probable apriori. Later on pages 282-288,
-\citep{esl} show that the MSE of bagged estimates where samples are
-drawn from the population is less than or equal to the MSE of an
-indvidual model. For classification problems, \citep{bagging} shows that
-with infinite samples from the population, bagging can approximate the
-optimal classifier under certain conditions. This requires the majority
-of classifiers fit to bootstrapped samples to predict the correct class
-more often than not and relatively balanced classes. Otherwise, bagging
-can make classifiers worse. All of these results concerning infinite
-samples are not very useful, but hint at the practical applications of
-bagging.
+There's some intuition to the random forest algorithm. We know trees are
+flexible, and bagging will allow models to consider variations in the
+data. \emph{The Elements of Statistical Learning} present several proofs
+demonstrating results that provide some intuition to the power of
+bootstrapping. On pages 271-272, \cite{esl} show that the distribution
+of bootstrap means for infinite samples from a normal population is
+equivalent to to the Bayesian posterior distribution with a
+non-informative prior. They also demonstrate that for the multinomial
+likelihood, the bootstrap distribution with infinite draws from the
+population approximates the Bayesian posterior assuming all outcomes are
+equi probable apriori. Later on pages 282-288, \cite{esl} show that the
+MSE of bagged estimates where samples are drawn from the population is
+less than or equal to the MSE of an individual model. For classification
+problems, \cite{bagging} shows that with infinite samples from the
+population, bagging can approximate the optimal classifier under certain
+conditions. This requires the majority of classifiers fit to
+bootstrapped samples to predict the correct class more often than not
+and relatively balanced classes. Otherwise, bagging can reduce accuracy.
+All of these results concerning infinite samples are not very useful,
+but hint at the practical applications of bagging.
 
-The main limitation in bagging alone is correlation between models. If
-we think about averaging results from two trees \(T_1,T_2\) for
-predictions, the variance of our estimates will be
+The main limitation in bagging alone is correlation between models. When
+averaging results from two trees \(T_1,T_2\), the variance of our
+estimates will be
 \(\frac{1}{4}(\mathbb{V}[T_1]+\mathbb{V}[T_2]+2\cdot\text{cov}(T_1, T_2))\).
-When only a few variables contain relevant information, we expect trees
-to make similar predictions. The Random forests algorithm of
-\citep{random_forest} combats the correlation between trees by taking
-the same approach implemented by Ho in Random decision forests
-\citep{Ho}. Random decision forests average multiple decision trees fit
-to the same data. The key feature in the algorithm is the random
-subspace method where a random subset of the available predictors is
-drawn for each decision. Introducing randomness brings variety to the
-forest, resulting in weaker correlation between trees. The combination
-of random subspace and bagging makes Breiman's Random forest
-\citep{random_forest} a flexible model with low variance. The
-hyperparameters for the random forest model are the number of trees to
-grow, the minimum and maximum number of observations allowed in a
-terminal node, and the number of predictors to select for each decision.
-In Figure~\ref{fig-sim1-mse} we compare the MSE of models fit to data
-simulated in the same way as the previous simulation study. The rpart
-\citep{rpart} and randomForest \citep{rf_r} functions were used to fit
-models.
+If only a few variables contain relevant information, we expect trees to
+make similar predictions. The random forests algorithm of
+\cite{random_forest} combats the correlation between trees by taking the
+same approach implemented by Ho in random decision forests, \citep{Ho}.
+Random decision forests average multiple decision trees fit to the same
+data. The key feature in the algorithm is the random subspace method
+where a random subset of the available predictors is drawn for each
+decision. Introducing randomness brings variety to the forest, resulting
+in weaker correlation between trees. The combination of random subspace
+and bagging makes Breiman's random forest a flexible model with low
+variance. The hyperparameters for the random forest model are the number
+of trees to grow, the minimum and maximum number of observations allowed
+in a terminal node, and the number of predictors to select for each
+decision. In Figure~\ref{fig-sim1-mse} we compare the MSE of models fit
+to data simulated in the same way as the previous simulation study. The
+rpart \citep{rpart} and randomForest \citep{rf_r} functions were used to
+fit models.
 
 \begin{figure}[H]
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{main_QMD_files/figure-pdf/fig-sim1-rf-fit-1.png}}
+\includegraphics{main_QMD_files/figure-pdf/fig-sim1-rf-fit-1.png}
 
 }
 
@@ -637,7 +683,7 @@ models on simulated data}
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{main_QMD_files/figure-pdf/fig-sim1-mse-1.png}}
+\includegraphics{main_QMD_files/figure-pdf/fig-sim1-mse-1.png}
 
 }
 
@@ -646,7 +692,7 @@ models on simulated data}
 
 \end{figure}%
 
-We see considerably less variation in the mean squared error of random
+There is considerably less variation in the mean squared error of random
 forests fit to the same data as individual decision trees, but single
 tree models generally outperformed a random forest. Random forests are
 designed for data with several covariates. With a single predictor, the
@@ -654,7 +700,7 @@ random forest algorithm degenerates to bagging with out of bag
 predictions. Bagging reduces the variance of predictions at the cost of
 bias, and thus the ``random forest'' predictions were often worse than
 predictions from individual trees. Pages 600, 601 of The Elements of
-Statistical Learning, \citep{esl} display a proof showing that the bias
+Statistical Learning, \cite{esl} display a proof showing that the bias
 of a random forest is the same as the bias of any individual tree in the
 ensemble. The randomization in the random forest algorithm implies trees
 within the ensemble are almost certainly smaller than a single tree fit
@@ -669,7 +715,7 @@ testing data are displayed in Figure~\ref{fig-sim2}.
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{main_QMD_files/figure-pdf/fig-sim2-1.png}}
+\includegraphics{main_QMD_files/figure-pdf/fig-sim2-1.png}
 
 }
 
@@ -680,38 +726,37 @@ on linear model with several predictors}
 
 \subsection{Bayesian CART}\label{bayesian-cart}
 
-In the current and following section we discuss Bayesian methods for
-tree algorithms. Bayesian tree algorithms assume a stochastic process
-generates the tree, and a distribution for the observations within the
-terminal nodes. Randomness is used to explore possible structures that
-may increase the likelihood. The flexibility of trees necessitates
-regularization of their structure, which can be easily achieved through
-the use of a prior. There are many ways to specify a Bayesian tree but,
-our discussion is limited to the Bayesian CART method proposed by
-\citep{bayes_cart}. In Bayesian CART, the search process begins with an
-inital stump tree, and proposes a new structure for the tree at random.
-For the proposal, there are four possibilities. A change step is
-proposed with probability 0.4. In the change step, a non-terminal node
-is randomly selected and the splitting rule replaced. The new rule is
-chosen by randomly selecting a splitting variable \(X_j\), and then
-randomly selecting an observed value of \(\bm x_j\) as a cutoff. The
-same splitting rule cannot appear multiple times within the current
-tree. For the grow step of the search, a terminal node is randomly
-selected, a splitting rule is added, and a sibling for the chosen node
-is grown. The probability a grow step is 0.25 and the decision rule is
-chosen in the same way as in the change step. The third possible move in
-the search is randomly selecting intermediate nodes, and collapsing all
-nodes beneath. This step is referred to as pruning and is proposed with
-probability 0.25. The last possible move for a trees structure is node
-swapping. Parent and child intermediate nodes are selected and the rules
-are swapped. After updating the structure of the tree, new nodes are
-marked as splittable with probability \(\frac{\alpha}{1+\beta\gamma^d}\)
-where \(\alpha\in(0,1)\) and \(\beta,\gamma\in(0,\infty)\) are
-hyperparameters and \(d\) is the depth of the selected node. Finally,
-terminal nodes are updated and the proposal is accepted or rejected.
-\citep{bayes_cart} describe methods for independent and correlated
-terminal nodes. With the proposal tree constructed, the
-Metropolis-Hastings algorithm is used to update the sequence of trees.
+Bayesian tree algorithms assume a stochastic process generates the tree,
+and a distribution for the observations within the terminal nodes.
+Randomness is used to explore possible structures that may increase the
+posterior. The flexibility of trees necessitates regularization of their
+structure, which can be easily achieved through the use of a prior.
+There are many ways to specify a Bayesian tree but, our discussion is
+limited to the Bayesian CART method proposed by \cite{bayes_cart}. In
+Bayesian CART, the search process begins with an initial stump tree, and
+proposes a new structure for the tree at random. For the proposal, there
+are four possibilities. A change step is proposed with probability 0.4.
+In the change step, a non-terminal node is randomly selected and the
+splitting rule replaced. The new rule is chosen by randomly selecting a
+splitting variable \(X_j\), and then randomly selecting an observed
+value of \(\bm x_j\) as a cutoff. The same splitting rule cannot appear
+multiple times within the current tree. For the grow step of the search,
+a terminal node is randomly selected, a splitting rule is added, and a
+sibling for the chosen node is grown. The probability a grow step is
+0.25 and the decision rule is chosen in the same way as in the change
+step. The third possible move in the search is randomly selecting
+intermediate nodes, and collapsing all nodes beneath. This step is
+referred to as pruning and is proposed with probability 0.25. The last
+possible move for a trees structure is node swapping. Parent and child
+intermediate nodes are selected and the rules are swapped. After
+updating the structure of the tree, new nodes are marked as splittable
+with probability \(\frac{\alpha}{1+\beta\gamma^d}\) where
+\(\alpha\in(0,1)\) and \(\beta,\gamma\in(0,\infty)\) are hyperparameters
+and \(d\) is the depth of the selected node. Finally, terminal nodes are
+updated and the proposal is accepted or rejected. \cite{bayes_cart}
+describe methods for independent and correlated terminal nodes. With the
+proposal tree constructed, the Metropolis-Hastings algorithm is used to
+update the sequence of trees.
 
 Bayesian CART may become stuck around a local mode where the next tree
 in the sequence provides little to no improvement. To combat this, a
@@ -723,7 +768,7 @@ predecessors, keeping track of which trees have the highest probability.
 The frequency of tree structures explored is ignored, making Bayesian
 CART a stochastic search as opposed to a Monte Carlo based method like
 in BART. Averaging trees that have converged to a local mode results in
-a model similiar to random forests. Unlike random forests there is a
+a model similar to random forests. Unlike random forests there is a
 distribution for the predictions.
 
 \subsection{Bayesian Additive Regression Trees
@@ -736,27 +781,33 @@ is the \(b\)'th tree, \(M_b\) are the associated terminal nodes, and
 \(g(\bm x_i;T_b,M_b)\) is the function that assigns \(\bm x_i\) to
 \(\mu_{lb}\), \(l\in\{1,2,...,|M_b|\}\). Unlike the random forest
 algorithm, the trees are not bagged and each tree has access to each
-feature. Additionally, the final model is based on the sum of all trees
-as opposed to an average. A key difference between the approach to
-growing trees in BART and Bayesian CART is that the BART tree structure
-is grown via MCMC as opposed to a Markov chain stochastic search. Using
-a highly informative prior encourages smaller trees, resulting in faster
-convergence and less variable predictions.
+feature. Another key difference is the final model is based on the sum
+of all trees as opposed to an average. BART models use the same
+stochastic process to define the tree structure as Bayesian CART, but
+differs in model specification. In Bayesian CART, trees that have high
+posterior probability are recorded, but the number of occurrences for
+each structure is ignored. This makes Bayesian CART a stochastic search
+as opposed to a full MCMC. In BART, draws from terminal nodes remain
+after the tree changes structure. We thus have a probability
+distribution over the structure of the trees. Placing a highly
+informative prior on the terminal status of nodes encourages smaller
+trees, resulting in faster convergence and less variable predictions.
 
 The algorithm starts by growing \(M\) trees with a single terminal node
-(stumps). Gibbs sampling is used to iteratively update each tree
+(stumps). Gibbs sampling is used to alliteratively update each tree
 conditioned on all other trees. Conditional updates are simplified by
 expressing \(T_b|T_1,T_2,...T_{b-1},T_{b+1},...T_m\) as \(T_b|R_b\)
 where \(R_b\) denotes the distribution of residuals from predictions
 excluding \(T_b\). Summing trees grown conditionally on one another
-makes the contributions of individual nodes small. \citep{bart_paper}
+makes the contributions of individual nodes small. \cite{bart_paper}
 state ``\ldots{} we can imagine the algorithm as analogous to sculpting
-a complex figure by adding and subtracting small dabs of clay.'' This
-incremental sculpting process is achieved by using a highly informative
-prior, also preventing any single tree from dominating the model.
+a complex figure by adding and subtracting small dabs of clay.''
+Conditional updates along with a highly informative prior on the
+terminal status of nodes allow the model to explore intricate
+relationships in the data, without overfitting.
 
 BART is an adaptation of there original Bayesian CART algorithm
-\citep{bayes_cart}. With the smaller tree sizes, the pruning proposal is
+\cite{bayes_cart}. With the smaller tree sizes, the pruning proposal is
 modified to only prune terminal nodes. Even with this modification,
 trees will still collapse to a stump throughout MCMC. Convergence is
 aided by the somewhat unrealistic assumption of independent priors for
@@ -782,8 +833,8 @@ for the cut point in the binary decision. A
 across all trees. The hyperparameters \(\mu_\mu\) and \(\sigma_\mu\) are
 chosen based on the data such that
 \(\min(Y)=|M|\mu_\mu-k\sqrt{|M|}\sigma_\mu\) and
-\(\max(Y)=|M|\mu_\mu-k\sqrt{|M|}\sigma_\mu\). In \citep{bart_paper},
-they recommend choosing \(k\in[1,3]\). The BART R package \citep{bart_r}
+\(\max(Y)=|M|\mu_\mu-k\sqrt{|M|}\sigma_\mu\). In \cite{bart_paper}, they
+recommend choosing \(k\in[1,3]\). The BART R package \cite{bart_r}
 resales \(Y\) such that \(Y\in[-0.5, 0.5]\) and chooses
 \(\mu_\mu=0\implies\sigma_\mu=\frac{0.5}{k\sqrt{|M|}}\).
 
@@ -791,7 +842,7 @@ Two differences between BART and traditional Bayesian models are the
 number of trees \(m\) is fixed and data is used to inform the priors.
 These features push BART to be more of a non-parametric method, but with
 many of the features of Bayesian models. Inference is still derived from
-the likelihood and hyperparameters can be tuned using a testing set with
+the posterior and hyperparameters can be tuned using a testing set with
 the goal of bringing prediction intervals to the nominal level. An
 example of a BART model tuned for nominal coverage to simulated data is
 displayed in Figure~\ref{fig-bart-sim1}. The poor fit can likely be
@@ -803,7 +854,7 @@ model.
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{main_QMD_files/figure-pdf/fig-bart-sim1-1.png}}
+\includegraphics{main_QMD_files/figure-pdf/fig-bart-sim1-1.png}
 
 }
 
@@ -811,16 +862,15 @@ model.
 
 \end{figure}%
 
-So far we have focused on BART and other algorithms ability to estimate
-functions. Ensembles of trees are not used exclusively for prediction.
-Two inferential tools that are commonly used with both random forests
-and BART are variable importance and variable interaction measures. We
-briefly describe these measures, using \citep{bartMan} bartMan R
-package. Notes on variable importance and variable interaction measures
-are based on the documentation. Similiar measurements have been useful
-for inference from random forests, but the calculations are different.
+Ensembles of trees are not used exclusively for prediction. Two
+inferential tools that are commonly used with both random forests and
+BART are variable importance and variable interaction measures. We
+briefly describe these measures, using \cite{bartMan} bartMan R package.
+Notes on variable importance and variable interaction measures are based
+on the documentation. Similar measurements have been useful for
+inference from random forests, but the calculations are different.
 
-Variable importance can be measurd by looking at the proportion of
+Variable importance can be measured by looking at the proportion of
 decisions in which a variable is used. For BART, the structure of the
 trees varies across iterations of MCMC, so we define \(c_{r,k}\) as the
 number of times variable \(r\) is used as a splitting decisions within
@@ -831,16 +881,16 @@ importance is then measured as
 extreme cases, with covariates that provide no information about the
 response, we should simply estimate \(f\) as the mean of the observed
 data. BART will make few decisions in this scenario as proposals will
-provide little to no improvement to the likelihood. On the other hand,
-if we had some variable that completely explained our response, BART may
-consistently make decisions for each observed value of the feature.
+provide little to no improvement to the likelihood. If we had some
+variable that completely explained our response, BART may consistently
+make decisions off values of said feature.
 
-Similiar to how variable importance is measured, we can assess the
+Similar to how variable importance is measured, we can assess the
 potential for interactions by calculating the proportion of successive
 decisions concerning two variables across posterior samples. Individual
 decisions/sequences of decisions do not have much meaning on there own,
-making these algorithms hard to explain. It makese sense though that if
-a variable is consistently used, it must be able to explain the response
+making these algorithms hard to explain. It makes sense though that if a
+variable is consistently used, it must be able to explain the response
 to some degree. These tools can be used to interpret a BART model, or to
 help with variable selection for another model.
 Figure~\ref{fig-vimp_vint} displays a matrix of variable importance and
@@ -856,7 +906,7 @@ results must be scrutinized.
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{figures/vimp_pres.png}}
+\includegraphics{figures/vimp_pres.png}
 
 }
 
@@ -869,7 +919,7 @@ Before we move on to the data, we briefly discuss diagnostics for BART.
 Unlike the random forest algorithm, a BART model for a continuous
 response assumes normally distributed errors and constant variance. When
 using a BART model, we need to assess the normality assumption, model
-fit, and convergence. The bartMan R package \citep{bartMan} provides a
+fit, and convergence. The bartMan R package \cite{bartMan} provides a
 convenient tool for diagnostics. Figure~\ref{fig-bart_diag} shows the
 diagnostics for the same model used for Figure~\ref{fig-vimp_vint}. The
 Q-Q plot and Histogram both indicate normality was reasonable as
@@ -877,21 +927,20 @@ expected. We see constant variance is reasonable as well in the Fitted
 vs Residuals Plot. The actual vs fitted plot shows BART fits the data
 quite well as the observed and fitted values are quite close. Variable
 Importance intervals shows BART correctly identified all Variables as
-important as the intervals do not contain zero. The Trace Plot for Sigma
-shows the standard deviation has converged reasonably well, but we would
-most likely run the sampler longer in a real analysis. Additional
-convergence assesments should be performed. Bart models have many
-parameters, and it is not unheard of to avoid assessing the convergence
-of each tree. The thought behind this is we don't care about any of the
-individual trees, so as long as our predictions have converged the model
-fits reasonably well. Changing the number of trees, along with
-\(\alpha\) and \(\beta\) can help with convergence.
+important as the intervals do not contain zero. The trace plot for
+\(\sigma\) shows the standard deviation has converged reasonably well.
+BART models have many parameters, and it is not unheard of to avoid
+assessing the convergence of each tree. The thought behind this is we
+don't care about any of the individual trees, so as long as our
+predictions have converged the model fits reasonably well. Changing the
+number of trees, along with \(\alpha\) and \(\beta\) can help with
+convergence.
 
 \begin{figure}[H]
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{figures/bart_diag.png}}
+\includegraphics{figures/bart_diag.png}
 
 }
 
@@ -904,10 +953,15 @@ fits reasonably well. Changing the number of trees, along with
 Before we can apply any of the models discussed to assess the importance
 of land cover on flying fox feeding locations, we need to extract and
 transform the data. The flying fox locations themselves form a point
-pattern, which can't be modelled directly by any of the algorithms
-discussed. We avoid modelling a point pattern by aggregating counts over
-a grid to create areal data. In this section we discuss the tools used
-to obtain and process our data.
+pattern, which can't be modeled directly by any of the algorithms
+discussed. Point patterns are a realization of a point process, defined
+by a random number of observations in random locations. Modelling point
+pattern data requires estimating the mean occurrence rate across an
+entire surface. We're not particularly interested in the precise
+locations flying foxes feed so modelling a point pattern is overkill.
+Instead, we focus on the land cover characteristics of larger grid cells
+to examine the potential association with feeding locations. In this
+section we discuss the tools used to obtain and process our data.
 
 \subsection{Raster Data and Google Earth
 Engine}\label{raster-data-and-google-earth-engine}
@@ -916,7 +970,7 @@ Rasters are used to store data with spatial components. Each pixel has
 an \((x,y)\) coordinate, and a variable of interest. We can visualize
 rasters by mapping the variable to a color. Gradient scales can be used
 for continuous values. For this project, we use rasters pulled via
-Google Earth Engine (GEE), \citep{gee}. GEE has a large database of
+Google Earth Engine (GEE), \cite{gee}. GEE has a large database of
 satellite images and rasters of estimated attributes. Many earth engine
 datasets contain images describing different attributes of the land.
 These attributes are labelled bands.
@@ -927,13 +981,13 @@ sphere. Using the position of the camera and other factors such as
 distance to the earth, \((x,y,z)\) coordinates can be assigned to each
 pixel. For spatial data, we need to know how far apart locations are on
 the sphere. Looking at a picture of a sphere, we can't determine how far
-apart points are due to the curvature. Gauss's Theorema Egregium (how to
-cite?) implies that no 2d map perfectly portrays the distance between
-points. We need to choose a CRS that preserves the distance between
-points for our area of interest reasonably well. The location on the
-earth and size of the area determine this choice. Each raster has a
-pre-specified CRS that may or may not be suitable, but we can always
-project the raster into another CRS.
+apart points are due to the curvature. Gauss's Theorema Egregium implies
+that no 2d map perfectly portrays the distance between points. We need
+to choose a CRS that preserves the distance between points for our area
+of interest reasonably well. The location on the earth and size of the
+area determine this choice. Each raster has a pre-specified CRS that may
+or may not be suitable, but rasters can always be projected into another
+CRS.
 
 Working with data from earth engine we can either select an individual
 image, or an image collection. An image corresponds to a specific band
@@ -945,7 +999,7 @@ specific region and time period. After selecting a band, an individual
 image can be chosen. Alternatively, we can produce an image based
 calculation over the filtered time period and region. Images can then be
 exported to Google Drive and can be loaded into with the R raster
-package, \citep{raster}. After loading the raster, we can create a long
+package, \cite{raster}. After loading the raster, we can create a long
 formatted data structure for modelling.
 
 \subsection{Land Cover and Dynamic
@@ -953,7 +1007,7 @@ World}\label{land-cover-and-dynamic-world}
 
 One category of datasets on Google Earth Engine is land cover. Land
 cover describes natural and developed features of the earth as classes.
-A similiar but distinct class of datasets is land use, which describes
+A similar but distinct class of datasets is land use, which describes
 how humans use the land. There are various methods to estimate land
 cover, and many models estimate different classes. Additionally,
 different datasets span various regions and time periods. The majority
@@ -962,66 +1016,145 @@ are produced in a multi-phase modelling process, considering many images
 along with external prior information. Working with recent data from
 Australia, there are fewer options, especially after excluding low
 resolution datasets. In this project, we utilize data from DynamicWorld
-V1 by \citep{dynamic_world}. Dynamic World is a daily high resolution
-land cover dataset derived from Sentinel-2 satelites. The estimated
+V1 by \cite{dynamic_world}. Dynamic World is a daily high resolution
+land cover dataset derived from Sentinel-2 satellites. The estimated
 probability of each class in dynamic world is the output from a
-convolutional neural nets predictions on a single sattelite image.
+convectional neural nets predictions on a single satellite image.
 
 Within Dynamic World there are ten bands, each containing a collection
-of images. In our analysis, we use eight relevant bands that each
-contain the estimated probability that a \(100\ m^2\) region of the
-earth corresponds to the chosen band. Unsurprisingly, daily high
-resolution data is rife with missingness. To combat this, we compute the
-median land class over a selected period of time. Missing values are
-ignored in the calculation by default. This also helps slightly with the
-fact that Dynamic World estimates are based on an individual day.
-Weather and atmospheric factors may influence estimates so looking at
-the closest day may not be advisable. We don't expect major changes to
-land cover in a short period of time so this is reasonable. An
-individual image can then be produced based on some function of the
-images. A panel of the exported rasters is displayed in \citet{dw_lc}.
+of images at a \(10\ m\) resolution. In our analysis, we use eight
+relevant bands that each contain the estimated probability that a
+\(100\ m^2\) region of the earth corresponds to the chosen band.
+Unsurprisingly, daily high resolution data is rife with missingness. To
+combat this, we compute the median land class over a selected period of
+time. Missing values are ignored in the calculation by default. This
+also helps slightly with the fact that Dynamic World estimates are based
+on an individual day. Weather and atmospheric factors may influence
+estimates so looking at the closest day may not be advisable. We don't
+expect major changes to land cover in a short period of time so this is
+reasonable. An individual image can then be produced based on some
+function of the images. A panel of the exported rasters is displayed in
+Figure~\ref{fig-dw-lc}.
 
 \begin{figure}[H]
 
-{\centering \pandocbounded{\includegraphics[keepaspectratio]{figures/2022_rast.png}}
+\centering{
+
+\includegraphics{figures/2022_rast.png}
 
 }
 
-\caption{Dynamic World Exports from Google Earth Engine}
+\caption{\label{fig-dw-lc}Dynamic World Exports from Google Earth
+Engine}
 
 \end{figure}%
 
-\subsection{Areal Data}\label{areal-data}
+\subsection{Data Processing}\label{data-processing}
 
-https://gis.stackexchange.com/questions/323698/counting-points-in-polygons-with-sf-package-of-r
+The radar data used in our project was extracted from an archived
+PostgreSQL database with three days of observations. The radar itself is
+recording data day and night, and sees many objects and organisms other
+than bats. Birds and bats are essentially the same to the radar. Our
+first step in processing the data was to filter observations by time and
+class. Using SQL, we construct a table of flight paths for the three
+sizes (classes) of bat where the last observed location is recorded
+between 12:00 am and 5:00 am. The flight paths are recorded as
+linestrings, a geometry representing the path through a sequence of
+locations.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(grid\_sf) }\SpecialCharTok{+}
-  \FunctionTok{geom\_sf}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ count), }\AttributeTok{color =} \StringTok{"white"}\NormalTok{) }\SpecialCharTok{+}
-  \FunctionTok{scale\_fill\_viridis\_c}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{fill =} \StringTok{"Bat Count"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+Using our table of linestrings, we define an area of observation for the
+bats with the ST\_ConcaveHull from PostGIS. The concave hull function
+takes a geometry or table of geometries, and shrink wraps a polygon
+around them. There is a parameter to control the convexity, which we set
+to 0.99, allowing minimal concavity. The polygon returned by
+ST\_ConcaveHull along with the final observed location of bats were then
+exported for additional data processing.
 
-\pandocbounded{\includegraphics[keepaspectratio]{main_QMD_files/figure-pdf/unnamed-chunk-16-1.png}}
+Any form of spatial data can be transformed into areal data by defining
+a grid and aggregating observations within the cells. Before aggregating
+flying fox counts, we need to define a grid. Returning to Google Earth
+Engine, the previously defined boundary is imported, an enclosing
+rectangle defined. The coveringGrid function is then used to define our
+grid. The grid can be filtered based on our area of interest. Using the
+filtered grid we, sample pixel values from dynamic world to obtain the
+mean probability for each class over the grid. Resampling in earth
+engine is much easier than manually averaging as we don't have to worry
+about weighting averages when grid cells don't align with the cells of
+rasters. Without paying additional fees, the number of cells that can be
+resampled is capped at 5000. For a larger area, the grid could be
+partitioned into blocks to resample in batches. At a scale of
+\(289.6\ m\), our grid contains 4748 observed locations. There is slight
+variation in the size of the grid, ranging from \(73,212\) to \(73,381\)
+\(m^2\).
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{geom\_raster}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x, }\AttributeTok{y =}\NormalTok{ y, }\AttributeTok{fill =}\NormalTok{ water), }\AttributeTok{data =}\NormalTok{ rast\_dat) }\SpecialCharTok{+}
-  \FunctionTok{scale\_fill\_viridis\_c}\NormalTok{() }\SpecialCharTok{+}
-\NormalTok{  ggnewscale}\SpecialCharTok{::}\FunctionTok{new\_scale\_fill}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{geom\_polygon}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x, }\AttributeTok{y =}\NormalTok{ y), }\AttributeTok{fill =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{colour =} \StringTok{"black"}\NormalTok{, }\AttributeTok{data =}\NormalTok{ hull\_dat) }\SpecialCharTok{+}
-  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Long, }\AttributeTok{y =}\NormalTok{ Lat), }\AttributeTok{color =} \StringTok{"red"}\NormalTok{, }\AttributeTok{data =}\NormalTok{ extracted\_wide,}
-             \AttributeTok{alpha =} \FloatTok{0.2}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+Our gridded area of interest was then imported into R along with the
+three nights of radar data. Using the lengths and st\_intersect function
+from the sf package \citep{sf}, we can easily obtain flying fox counts
+for each grid cell. Figure~\ref{fig-proc-dat} shows our processed data
+rasterized.
 
-\pandocbounded{\includegraphics[keepaspectratio]{main_QMD_files/figure-pdf/unnamed-chunk-16-2.png}}
+\begin{figure}[H]
+
+\centering{
+
+\includegraphics{figures/proc_rast.png}
+
+}
+
+\caption{\label{fig-proc-dat}Rasterized data for modelling}
+
+\end{figure}%
 
 \section{Modelling and Results}\label{modelling-and-results}
+
+CRPS on test summary stats
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0423}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1268}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1268}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1268}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1268}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1268}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1268}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1268}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0704}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+min
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Q1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+median
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Q3
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+max
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+mean
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+sd
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+n
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+& 1.698844 & 2.508068 & 26.02851 & 128.1026 & 4770.276 & 148.9698 &
+341.4991 & 1425 \\
+\end{longtable}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{figures/crps_examp.png}
+
+}
+
+\caption{Early results}
+
+\end{figure}%
 
 
 \renewcommand\refname{Conclusion}
